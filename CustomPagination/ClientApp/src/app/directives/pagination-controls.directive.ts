@@ -69,12 +69,12 @@ export class PaginationControlsDirective {
   }
 
   goToLast(){
-    this.checkValidId();
+    //this.checkValidId();
     this.setCurrent(this.getLastPage());
   }
 
   goToFirst(){
-    this.checkValidId();
+    //this.checkValidId();
     this.setCurrent(1);
   }
   /**

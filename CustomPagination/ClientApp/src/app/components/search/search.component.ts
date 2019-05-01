@@ -146,6 +146,7 @@ export class SearchComponent implements OnInit {
 
   searchTerm: string = 'Default';
   dataSource: any;
+  sortedData: any;
   //dataSource = new MatTableDataSource<Person>(this.data);
 
   displayedColumns: string[] = ['name', 'personStatus', 'staffType', 'component', 'arrivalDate', 'hrSeparationDate',
@@ -160,7 +161,8 @@ export class SearchComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.dataSource = this.data.slice(0, this.size);
+    this.sortedData = this.data.slice();
+    this.dataSource = this.sortedData.slice(0, this.size);
     //this.dataSource = new MatTableDataSource<Person>(this.data.slice(0, this.size));
     this.dataSource.sort = this.sort;
     this.rangeStart = 1;
@@ -174,7 +176,7 @@ export class SearchComponent implements OnInit {
     this.rangeStart = this.getStartRange(this.pageIndex);
     this.rangeEnd = this.getEndRange(this.pageIndex);
 
-    this.dataSource = this.data.slice(event * this.size - this.size, event * this.size);
+    this.dataSource = this.sortedData.slice(event * this.size - this.size, event * this.size);
     //this.dataSource = new MatTableDataSource<Person>(this.data.slice(event * this.size - this.size, event * this.size));
   }
 
@@ -184,20 +186,21 @@ export class SearchComponent implements OnInit {
 
   getEndRange(pageIndex: any){
     let selectorEnd = pageIndex * this.size;
-    return (selectorEnd > this.data.length) ? this.data.length : selectorEnd;
+    return (selectorEnd > this.sortedData.length) ? this.sortedData.length : selectorEnd;
   }
 
   //CACI-4567
   sortData(sort: Sort){
     //get copy of data to save original non sort
-    const data = this.data.slice();
+    const data = this.sortedData;
     if (!sort.active || sort.direction === ''){
       //set data if sort is set to off
-      this.dataSource = this.data.slice(this.getStartRange(this.pageIndex) - 1, this.getEndRange(this.pageIndex));
+      this.sortedData = this.data.slice();
+      this.dataSource = this.sortedData.slice(this.getStartRange(this.pageIndex) - 1, this.getEndRange(this.pageIndex));
       return;
     }
 
-    this.dataSource = data.sort((a, b) => {
+    this.dataSource = this.sortedData.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active){
         case 'name': return this.compare(a.name, b.name, isAsc);
