@@ -65,6 +65,7 @@ table{
 
 .basicSearchContainer{
   padding-top: 40px;
+  margin-left: -50px;
 }
 
 .basicSearchResult{
@@ -112,8 +113,8 @@ table{
   color: #000000;
 }
 
-th.mat-header-cell{
-
+.mat-header-row{
+  height: 35px!important;
 }
 
 td.mat-cell, td.mat-footer-cell,
