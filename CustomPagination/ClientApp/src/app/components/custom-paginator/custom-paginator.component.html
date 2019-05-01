@@ -1,0 +1,99 @@
+<pagination-template #p="paginationApi"
+                     [id]="id"
+                     [maxSize]="maxSize"
+                     (pageChange)="pageChange.emit($event)">
+  <ul class="epic-pagination"
+      role="navigation"
+      [attr.aria-label]="screenReaderPaginationLabel"
+      [class.responsive]="responsive"
+      *ngIf="!(autoHide && p.pages.length <= 1)">
+
+    <li class="pagination-first" [class.disabled]="p.isFirstPage()" *ngIf="directionLinks">
+      <a tabindex="0" *ngIf="1 < p.getCurrent()" (keyup.enter)="p.previous()" (click)="p.goToFirst()"
+         [attr.aria-label]="previousLabel + ' ' + screenReaderPageLabel">
+        {{ previousLabel }}<i [class.material-icons-pagination]="!p.isFirstPage()"
+                              [class.material-icons-pagination-disabled]="p.isFirstPage()"
+                              [class.disabled]="p.isFirstPage()">first_page</i> <span
+        class="show-for-sr">{{ screenReaderPageLabel }}</span>
+      </a>
+      <span *ngIf="p.isFirstPage()">
+                {{ previousLabel }} <i class="material-icons-pagination"
+                                       [class.material-icons-pagination]="!p.isFirstPage()"
+                                       [class.material-icons-pagination-disabled]="p.isFirstPage()"
+                                       [class.disabled]="p.isFirstPage()">first_page</i> <span
+        class="show-for-sr">{{ screenReaderPageLabel }}</span>
+            </span>
+    </li>
+
+    <li class="pagination-previous" [class.disabled]="p.isFirstPage()" *ngIf="directionLinks">
+      <a tabindex="0" *ngIf="1 < p.getCurrent()" (keyup.enter)="p.previous()" (click)="p.previous()"
+         [attr.aria-label]="previousLabel + ' ' + screenReaderPageLabel">
+        {{ previousLabel }}<i class="material-icons-pagination"
+                              [class.material-icons-pagination]="!p.isFirstPage()"
+                              [class.material-icons-pagination-disabled]="p.isFirstPage()"
+                              [class.disabled]="p.isFirstPage()">navigate_before</i> <span
+        class="show-for-sr">{{ screenReaderPageLabel }}</span>
+      </a>
+      <span *ngIf="p.isFirstPage()">
+                {{ previousLabel }} <i class="material-icons-pagination"
+                                       [class.material-icons-pagination]="!p.isFirstPage()"
+                                       [class.material-icons-pagination-disabled]="p.isFirstPage()"
+                                       [class.disabled]="p.isFirstPage()">navigate_before</i> <span
+        class="show-for-sr">{{ screenReaderPageLabel }}</span>
+            </span>
+    </li>
+    <li class="small-screen">
+      {{ p.getCurrent() }} / {{ p.getLastPage() }}
+    </li>
+    <li [class.current]="p.getCurrent() === page.value"
+        [class.ellipsis]="page.label === '...'"
+        *ngFor="let page of p.pages">
+      <a tabindex="0" (keyup.enter)="p.setCurrent(page.value)" (click)="p.setCurrent(page.value)"
+         *ngIf="p.getCurrent() !== page.value">
+        <span class="show-for-sr">{{ screenReaderPageLabel }} </span>
+        <span>{{ page.label }}</span>
+      </a>
+      <ng-container *ngIf="p.getCurrent() === page.value">
+        <span class="show-for-sr">{{ screenReaderCurrentLabel }} </span>
+        <span>{{ page.label }}</span>
+      </ng-container>
+    </li>
+    <li class="pagination-next " [class.disabled]="p.isLastPage()" *ngIf="directionLinks">
+      <a tabindex="0" *ngIf="!p.isLastPage()" (keyup.enter)="p.next()" (click)="p.next()"
+         [attr.aria-label]="nextLabel + ' ' + screenReaderPageLabel">
+        {{ nextLabel }} <i class="material-icons-pagination "
+                           [class.material-icons-pagination]="!p.isLastPage()"
+                           [class.material-icons-pagination-disabled]="p.isLastPage()"
+                           [class.disabled]="p.isLastPage()">navigate_next</i> <span
+        class="show-for-sr ">{{ screenReaderPageLabel }}</span>
+      </a>
+      <span *ngIf="p.isLastPage()">
+                 {{ nextLabel }} <i class="material-icons-pagination noSelect"
+                                    [class.material-icons-pagination]="!p.isLastPage()"
+                                    [class.material-icons-pagination-disabled]="p.isLastPage()"
+                                    [class.disabled]="p.isLastPage()">navigate_next</i> <span
+        class="show-for-sr">{{ screenReaderPageLabel }}</span>
+            </span>
+    </li>
+
+    <li class="pagination-last " [class.disabled]="p.isLastPage()" *ngIf="directionLinks">
+      <a tabindex="0" *ngIf="!p.isLastPage()" (keyup.enter)="p.next()" (click)="p.goToLast()"
+         [attr.aria-label]="nextLabel + ' ' + screenReaderPageLabel">
+        {{ nextLabel }} <i class="material-icons-pagination"
+                           [class.material-icons-pagination]="!p.isLastPage()"
+                           [class.material-icons-pagination-disabled]="p.isLastPage()"
+                           [class.disabled]="p.isLastPage()">last_page</i> <span
+        class="show-for-sr">{{ screenReaderPageLabel }}</span>
+      </a>
+      <span *ngIf="p.isLastPage()">
+                 {{ nextLabel }} <i class="material-icons-pagination"
+                                    [class.material-icons-pagination]="!p.isLastPage()"
+                                    [class.material-icons-pagination-disabled]="p.isLastPage()"
+                                    [class.disabled]="p.isLastPage()">last_page</i> <span
+        class="show-for-sr">{{ screenReaderPageLabel }}</span>
+            </span>
+    </li>
+
+
+  </ul>
+</pagination-template>

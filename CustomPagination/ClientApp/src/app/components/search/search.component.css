@@ -1,0 +1,130 @@
+body{
+  background-color: #fafafa;
+}
+
+table{
+  width: 100%;
+}
+
+.datatable-paging-control{
+  margin: 0px;
+  padding: 25px;
+  padding-bottom: 25px;
+  color: #0c2644;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.datatable-paging-control-left{
+  float: left;
+  margin-left: -50px;
+}
+
+.datatable-paging-control-right{
+  float: right;
+}
+
+.page-select-container{
+
+}
+
+.mat-select{
+  width: 35px;
+  margin-left: 15px;
+}
+
+.mat-select-arrow{
+  color: #ffffff;
+}
+
+.mat-select:focus:not(.mat-select-disabled).mat-primary
+.mat-select-arrow, .mat-select-underline, .mat-select-trigger{
+  background-color: #0c2644;
+  padding: 2px 5px 2px 5px;
+  font-size: 12px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #ffffff;
+  width: 40px;
+  margin-left: 15px;
+}
+
+.mat-select-value-text{
+  color: #ffffff;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+  color: #ffffff;
+}
+
+.basicSearchContainer{
+  padding-top: 40px;
+}
+
+.basicSearchResult{
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.basicSearchTitle{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #0c2644;
+  border-bottom: 2px solid #333333;
+  /*border-bottom: 1.5px solid #56616d;*/
+  padding-left: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.basicSearchTable{
+  width: calc(100% - 70px);
+  margin-left: 35px;
+  margin-top: 20px;
+  /*border: 1px solid #56616d;*/
+  border: 2px solid #cdcdcd;
+}
+
+.basicSearchTable th, td{
+  /*border: 1px solid #56616d;*/
+  border: 2px solid #cdcdcd;
+}
+
+.basicSearchTable th{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0c2644;
+}
+
+.basicSearchTable td{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: #000000;
+}
+
+th.mat-header-cell{
+
+}
+
+td.mat-cell, td.mat-footer-cell,
+th.mat-header-cell{
+  padding: 0px 10px!important;
+}
+
+.main-column{
+  min-width: 175px!important;
+}
+
+.personIcon{
+  padding-right: 10px;
+}
