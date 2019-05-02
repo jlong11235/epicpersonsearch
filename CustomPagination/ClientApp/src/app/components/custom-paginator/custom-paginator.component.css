@@ -1,7 +1,7 @@
 .epic-pagination {
   margin-left: 0;
   color: #0c2644;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
   margin-bottom: 1rem; }
 .epic-pagination::before, .epic-pagination::after {
@@ -47,7 +47,7 @@
 .epic-pagination .disabled {
   /*padding: 0.1875rem 0.625rem;*/
   margin: 0 4px;
-  color: #cacaca;
+  color: #cdcdcd;
   /*border: 1px solid #cacaca;*/
   cursor: default; }
 .epic-pagination .disabled:hover {
@@ -142,8 +142,8 @@
   word-wrap: normal;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
-  border: 1px solid #cacaca;
-  color: #cacaca;
+  border: 1px solid #cdcdcd;
+  color: #cdcdcd;
 }
 
 
