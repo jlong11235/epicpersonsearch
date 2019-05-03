@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatSort, MatTableDataSource, Sort} from "@angular/material";
+import {BasicSearchService} from "../../services/basic-search.service";
 
 export interface Person {
   eid: string,
@@ -185,9 +186,11 @@ export class SearchComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+  constructor(private searchService: BasicSearchService) { }
 
   ngOnInit() {
+    //sets data from search
+    //this.data = this.searchService.searchResults;
     this.sortedData = this.data.slice();
     this.dataSource = this.sortedData.slice(0, this.size);
     //this.dataSource = new MatTableDataSource<Person>(this.data.slice(0, this.size));
