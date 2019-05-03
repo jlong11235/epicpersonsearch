@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatSort, MatTableDataSource, Sort} from "@angular/material";
 
 export interface Person {
+  eid: string,
   name: string;
   personStatus: string;
   staffType: string;
@@ -10,6 +11,7 @@ export interface Person {
   component: string;
   hrOnDuty: string;
   hrCategory: string;
+  ssn: string;
 }
 
 @Component({
@@ -21,36 +23,43 @@ export interface Person {
 export class SearchComponent implements OnInit {
   data: Person[] = [
     {
-      name: 'ajohn cha',
+      eid: '',
+      name: 'kjohn cha',
       personStatus: 'Active',
       staffType: 'Employee',
       arrivalDate: '10/05/2018',
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
-      name: 'bRob Richards',
+      eid: '',
+      name: 'sRob Richards',
       personStatus: 'Active',
       staffType: 'Intern',
       arrivalDate: '10/05/2018',
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
-      name: 'cjoshua long',
+      eid: '',
+      name: 'cdjoshua long',
       personStatus: 'Active',
       staffType: 'WHO Advance Associate',
       arrivalDate: '10/05/2018',
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
+      eid: '',
       name: 'djason vorhees',
       personStatus: 'Active',
       staffType: 'Employee',
@@ -58,9 +67,11 @@ export class SearchComponent implements OnInit {
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
+      eid: '',
       name: 'emike myers',
       personStatus: 'Active',
       staffType: 'Intern',
@@ -68,9 +79,11 @@ export class SearchComponent implements OnInit {
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
+      eid: '',
       name: 'ffreddy kruger',
       personStatus: 'Active',
       staffType: 'WHO Advance Associate',
@@ -78,10 +91,11 @@ export class SearchComponent implements OnInit {
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
-
     {
+      eid: '',
       name: 'gjohn chaing',
       personStatus: 'Active2',
       staffType: 'Employee',
@@ -89,9 +103,11 @@ export class SearchComponent implements OnInit {
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
+      eid: '',
       name: 'hRob Richardsing',
       personStatus: 'Active2',
       staffType: 'Intern',
@@ -99,9 +115,11 @@ export class SearchComponent implements OnInit {
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
+      eid: '',
       name: 'ijoshua longing',
       personStatus: 'Active2',
       staffType: 'WHO Advance Associate',
@@ -109,9 +127,11 @@ export class SearchComponent implements OnInit {
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
+      eid: '',
       name: 'jjason vorheesing',
       personStatus: 'Active2',
       staffType: 'Employee',
@@ -119,9 +139,11 @@ export class SearchComponent implements OnInit {
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
+      eid: '',
       name: 'kmike myersing',
       personStatus: 'Active2',
       staffType: 'Intern',
@@ -129,9 +151,11 @@ export class SearchComponent implements OnInit {
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     },
     {
+      eid: '',
       name: 'lfreddy krugering',
       personStatus: 'Active2',
       staffType: 'WHO Advance Associate',
@@ -139,7 +163,8 @@ export class SearchComponent implements OnInit {
       hrSeparationDate: '05/11/2019',
       component: 'WHO',
       hrOnDuty: '09/09/2018',
-      hrCategory: 'EMP'
+      hrCategory: 'EMP',
+      ssn: ''
     }
 
   ];
@@ -147,6 +172,8 @@ export class SearchComponent implements OnInit {
   searchTerm: string = 'Default';
   dataSource: any;
   sortedData: any;
+
+  epic3xLink: string = 'https://epic-uat.apps.eop.gov/employee.aspx?employeeID=';
   //dataSource = new MatTableDataSource<Person>(this.data);
 
   displayedColumns: string[] = ['name', 'personStatus', 'staffType', 'component', 'arrivalDate', 'hrSeparationDate',

@@ -14,7 +14,7 @@
           <td mat-cell *matCellDef="let element" class="main-column"><span class="personIcon">
           <i class="material-icons-pagination" style="padding: 2px; -webkit-border-radius: 50%;
           -moz-border-radius: 50%;border-radius: 50%;">person</i>
-        </span><a href="#"><u>{{element?.name | titlecase}}</u></a> </td>
+        </span><a href="{{epic3xLink + element?.eid}}"><u>{{element?.name | titlecase}}</u></a> </td>
         </ng-container>
 
         <ng-container matColumnDef="personStatus">
@@ -56,7 +56,7 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns | paginate: {itemsPerPage: size,
-        currentPage: p, totalItems: data.length}"></tr>
+        currentPage: pageIndex, totalItems: data.length}"></tr>
 
       </table>
     </div>
@@ -65,7 +65,7 @@
     <!-- CACI-4533 -->
     <div class="datatable-paging-control">
       <div class="datatable-paging-control-left">
-        <app-custom-paginator [maxSize]="5" (pageChange)="p = $event;paginate(p)"></app-custom-paginator>
+        <app-custom-paginator [maxSize]="5" (pageChange)="paginate($event)"></app-custom-paginator>
       </div>
 
       <div class="page-select-container">
