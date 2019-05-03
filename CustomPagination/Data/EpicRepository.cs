@@ -9,9 +9,9 @@ namespace CustomPagination.Data
     public class EpicRepository : IEpicRepository
     {
         private readonly DataContext _context4;
-        private readonly DataContext _context3x;
+        private readonly DataContext3x _context3x;
 
-        public EpicRepository(DataContext context4, DataContext context3x)
+        public EpicRepository(DataContext context4, DataContext3x context3x)
         {
             _context4 = context4;
             _context3x = context3x;
