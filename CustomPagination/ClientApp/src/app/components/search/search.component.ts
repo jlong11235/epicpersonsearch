@@ -170,7 +170,7 @@ export class SearchComponent implements OnInit {
 
   ];
 
-  searchTerm: string = 'Default';
+  searchTerm: string;
   dataSource: any;
   sortedData: any;
 
@@ -191,6 +191,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     //sets data from search
     //this.data = this.searchService.searchResults;
+    this.searchTerm = this.searchService.searchTerm;
     this.sortedData = this.data.slice();
     this.dataSource = this.sortedData.slice(0, this.size);
     //this.dataSource = new MatTableDataSource<Person>(this.data.slice(0, this.size));

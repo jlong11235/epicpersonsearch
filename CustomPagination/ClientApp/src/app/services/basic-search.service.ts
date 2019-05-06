@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class BasicSearchService {
-
+  searchTerm: string = 'Search Term';
   searchResults: Person[];
 
   constructor(private http: HttpClient) { }

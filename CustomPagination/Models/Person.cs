@@ -15,5 +15,6 @@ namespace CustomPagination.Models
         public DateTime HRSeparationDate { get; set; }
         public string HRonDuty { get; set; }
         public string HRCategory { get; set; }
+        public string DisplayName { get; set; }
     }
 }

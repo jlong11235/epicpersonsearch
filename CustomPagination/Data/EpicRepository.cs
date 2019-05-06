@@ -47,7 +47,11 @@ namespace CustomPagination.Data
                         HRonDuty = p3.HRonDuty,
                         HRCategory = p3.HRCategory
                     })
-                .Where(p => p.LastName.Contains(searchTerm) || p.FirstName.Contains(searchTerm) ||
+//                .Where(p => p.LastName.Contains(searchTerm) ||
+//                            p.FirstName.Contains(searchTerm) ||
+//                            p.EID.Contains(searchTerm) ||
+//                            p.SSN.Contains(searchTerm)).ToListAsync();
+                .Where(p => p.DisplayName.Contains(searchTerm) ||
                             p.EID.Contains(searchTerm) ||
                             p.SSN.Contains(searchTerm)).ToListAsync();
         }
@@ -56,37 +60,46 @@ namespace CustomPagination.Data
         public async Task<List<Person>> PersonSearchInEpic3(string searchTerm)
         {
             return await _context3x.Persons.Where(p =>
-                p.LastName.Contains(searchTerm) || p.FirstName.Contains(searchTerm) || p.EID.Contains(searchTerm) ||
+                p.DisplayName.Contains(searchTerm) || p.EID.Contains(searchTerm) ||
                 p.SSN.Contains(searchTerm)).ToListAsync();
+//            return await _context3x.Persons.Where(p =>
+//                p.LastName.Contains(searchTerm) || p.FirstName.Contains(searchTerm) || p.EID.Contains(searchTerm) ||
+//                p.SSN.Contains(searchTerm)).ToListAsync();
         }
 
+        //since there is a display name field these are no longer needed
         public async Task<List<Person>> ComplexPersonSearchInEpic3(string[] searchTerms)
         {
             List<Person> personResult = new List<Person>();
 
             if (searchTerms.Length == 2)
             {
+                //decided to still check both firstname and lastname to catch things like 'josh long' finds 'joshua long'
                 //assume search format firstname lastname
                 personResult.AddRange(await _context3x.Persons.Where<Person>(p =>
-                    p.FirstName.ToLower().Contains(searchTerms[0])
-                    && p.LastName.ToLower().Contains(searchTerms[1])).ToListAsync());
+                    p.FirstName.Contains(searchTerms[0])
+                    && p.LastName.Contains(searchTerms[1])).ToListAsync());
             }
             else
             {
-                //group extra terms (ie Marry Ann Johnson)
-                //group with first name
-                string tmpFirst = string.Join(" ", searchTerms.Take(searchTerms.Length - 1));
-                personResult.AddRange(await _context3x.Persons.Where(p => p.FirstName.ToLower().Contains(tmpFirst)
-                                                                          && p.LastName.ToLower()
-                                                                              .Contains(searchTerms[
-                                                                                  searchTerms.Length - 1]))
-                    .ToListAsync());
-
-                //group with last name
-                string tmpLast = string.Join(" ", searchTerms.Skip(1));
-                personResult.AddRange(await _context3x.Persons.Where(p => p.FirstName.ToLower().Contains(searchTerms[0])
-                                                                          && p.LastName.ToLower().Contains(tmpLast))
-                    .ToListAsync());
+//                //group extra terms (ie Marry Ann Johnson)
+//                //group with first name
+//                string tmpFirst = string.Join(" ", searchTerms.Take(searchTerms.Length - 1));
+//                personResult.AddRange(await _context3x.Persons.Where(p =>
+//                        p.FirstName.Contains(tmpFirst)
+//                        && p.LastName
+//                            .Contains(searchTerms[
+//                                searchTerms.Length - 1]))
+//                    .ToListAsync());
+//
+//                //group with last name
+//                string tmpLast = string.Join(" ", searchTerms.Skip(1));
+//                personResult.AddRange(await _context3x.Persons.Where(p =>
+//                        p.FirstName.Contains(searchTerms[0])
+//                        && p.LastName.Contains(tmpLast))
+//                    .ToListAsync());
+                
+                personResult.AddRange(await PersonSearchInEpic3(string.Join(" ", searchTerms)));
             }
 
             return personResult.Distinct().ToList();
@@ -117,57 +130,59 @@ namespace CustomPagination.Data
                             HRonDuty = p3.HRonDuty,
                             HRCategory = p3.HRCategory
                         })
-                    .Where<Person>(p => p.FirstName.ToLower().Contains(searchTerms[0])
-                                        && p.LastName.ToLower().Contains(searchTerms[1])).ToListAsync());
+                    .Where<Person>(p => p.FirstName.Contains(searchTerms[0])
+                                        && p.LastName.Contains(searchTerms[1])).ToListAsync());
             }
             else
             {
-                //group extra terms (ie Marry Ann Johnson)
-                //group with first name
-                string tmpFirst = string.Join(" ", searchTerms.Take(searchTerms.Length - 1));
-                personResult.AddRange(await _context4.Persons
-                    .Join(_context3x.Persons,
-                        p4 => p4.EID,
-                        p3 => p3.EID,
-                        (p4, p3) => new Person()
-                        {
-                            EID = p4.EID,
-                            SSN = p4.SSN,
-                            LastName = p4.LastName,
-                            FirstName = p4.FirstName,
-                            PersonStatus = p3.PersonStatus,
-                            StaffType = p3.StaffType,
-                            Component = p3.Component,
-                            ArrivalDate = p3.ArrivalDate,
-                            HRSeparationDate = p3.HRSeparationDate,
-                            HRonDuty = p3.HRonDuty,
-                            HRCategory = p3.HRCategory
-                        })
-                    .Where(p => p.FirstName.ToLower().Contains(tmpFirst)
-                                && p.LastName.ToLower().Contains(searchTerms[searchTerms.Length - 1])).ToListAsync());
-
-                //group with last name
-                string tmpLast = string.Join(" ", searchTerms.Skip(1));
-                personResult.AddRange(await _context4.Persons
-                    .Join(_context3x.Persons,
-                        p4 => p4.EID,
-                        p3 => p3.EID,
-                        (p4, p3) => new Person()
-                        {
-                            EID = p4.EID,
-                            SSN = p4.SSN,
-                            LastName = p4.LastName,
-                            FirstName = p4.FirstName,
-                            PersonStatus = p3.PersonStatus,
-                            StaffType = p3.StaffType,
-                            Component = p3.Component,
-                            ArrivalDate = p3.ArrivalDate,
-                            HRSeparationDate = p3.HRSeparationDate,
-                            HRonDuty = p3.HRonDuty,
-                            HRCategory = p3.HRCategory
-                        })
-                    .Where(p => p.FirstName.ToLower().Contains(searchTerms[0])
-                                && p.LastName.ToLower().Contains(tmpLast)).ToListAsync());
+//                //group extra terms (ie Marry Ann Johnson)
+//                //group with first name
+//                string tmpFirst = string.Join(" ", searchTerms.Take(searchTerms.Length - 1));
+//                personResult.AddRange(await _context4.Persons
+//                    .Join(_context3x.Persons,
+//                        p4 => p4.EID,
+//                        p3 => p3.EID,
+//                        (p4, p3) => new Person()
+//                        {
+//                            EID = p4.EID,
+//                            SSN = p4.SSN,
+//                            LastName = p4.LastName,
+//                            FirstName = p4.FirstName,
+//                            PersonStatus = p3.PersonStatus,
+//                            StaffType = p3.StaffType,
+//                            Component = p3.Component,
+//                            ArrivalDate = p3.ArrivalDate,
+//                            HRSeparationDate = p3.HRSeparationDate,
+//                            HRonDuty = p3.HRonDuty,
+//                            HRCategory = p3.HRCategory
+//                        })
+//                    .Where(p => p.FirstName.Contains(tmpFirst)
+//                                && p.LastName.Contains(searchTerms[searchTerms.Length - 1]))
+//                    .ToListAsync());
+//
+//                //group with last name
+//                string tmpLast = string.Join(" ", searchTerms.Skip(1));
+//                personResult.AddRange(await _context4.Persons
+//                    .Join(_context3x.Persons,
+//                        p4 => p4.EID,
+//                        p3 => p3.EID,
+//                        (p4, p3) => new Person()
+//                        {
+//                            EID = p4.EID,
+//                            SSN = p4.SSN,
+//                            LastName = p4.LastName,
+//                            FirstName = p4.FirstName,
+//                            PersonStatus = p3.PersonStatus,
+//                            StaffType = p3.StaffType,
+//                            Component = p3.Component,
+//                            ArrivalDate = p3.ArrivalDate,
+//                            HRSeparationDate = p3.HRSeparationDate,
+//                            HRonDuty = p3.HRonDuty,
+//                            HRCategory = p3.HRCategory
+//                        })
+//                    .Where(p => p.FirstName.Contains(searchTerms[0])
+//                                && p.LastName.Contains(tmpLast)).ToListAsync());
+                personResult.AddRange(await PersonSearchInEpic4(string.Join(" ", searchTerms)));
             }
 
             return personResult.Distinct().ToList();

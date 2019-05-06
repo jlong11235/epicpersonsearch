@@ -25,6 +25,9 @@ namespace CustomPagination.Controllers
 
             List<Person> searchResult = new List<Person>();
 
+//            not needed because there is a display name field so search against
+// decided to still search by firstname and lastname instead of the just displayname to catch 
+//searches like 'josh long' will find 'joshua long', it makes the search a little more robust
             string[] searchArray = searchTerm.Trim().Split(' ');
             if (searchArray.Length > 1)
             {
@@ -34,18 +37,20 @@ namespace CustomPagination.Controllers
             }
 
             //searchResult = await _repo.DoSearch(searchTerm);
-            searchResult = await SimplePersonSearch(searchTerm);
+            searchResult = await SearchAllBasicFields(searchTerm);
+//            searchResult = await SimplePersonSearch(searchTerm);
             return Ok(searchResult);
         }
 
-        private async Task<List<Person>> SimplePersonSearch(string searchTerm)
-        {
-            List<Person> personResults = new List<Person>();
-
-            personResults.AddRange(await SearchAllBasicFields(searchTerm));
-
-            return personResults;
-        }
+        //since join code was moved to repository this method became redundant. 
+//        private async Task<List<Person>> SimplePersonSearch(string searchTerm)
+//        {
+//            List<Person> personResults = new List<Person>();
+//
+//            personResults.AddRange(await SearchAllBasicFields(searchTerm));
+//
+//            return personResults;
+//        }
 
         private async Task<List<Person>> SearchAllBasicFields(string searchTerm)
         {
@@ -55,11 +60,14 @@ namespace CustomPagination.Controllers
             return personResults.Distinct().ToList();
         }
 
+//        no longer needed because there is a display name field to search against
+// decided to still search by firstname and lastname instead of the just displayname to catch 
+//searches like 'josh long' will find 'joshua long', it makes the search a little more robust
         private async Task<List<Person>> ComplexPersonSearch(string[] searchTerms)
         {
             List<Person> personResults = new List<Person>();
 
-            //search first last (note: assumes no name field only firstname and lastname fields)
+            //search first last
             personResults.AddRange(await _repo.ComplexPersonSearchInEpic4(searchTerms));
             personResults.AddRange(await _repo.ComplexPersonSearchInEpic3(searchTerms));
 
