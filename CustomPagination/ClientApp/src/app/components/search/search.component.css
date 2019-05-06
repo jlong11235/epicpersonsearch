@@ -21,7 +21,8 @@ table{
 
 .datatable-paging-control-left{
   float: left;
-  margin-left: -50px;
+  /*margin-left: -37px;*/
+  margin-left: -4%;
 }
 
 .datatable-paging-control-right{
@@ -29,12 +30,12 @@ table{
 }
 
 .page-select-container{
-
+  margin-left: 10%;
 }
 
 .mat-select{
   width: 35px;
-  margin-left: 15px;
+  /*margin-left: 15px;*/
 }
 
 .mat-select-arrow{
