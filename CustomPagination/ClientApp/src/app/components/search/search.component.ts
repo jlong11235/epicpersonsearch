@@ -179,7 +179,7 @@ export class SearchComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'personStatus', 'staffType', 'component', 'arrivalDate', 'hrSeparationDate',
     'hrOnDuty', 'hrCategory'];
-  size = 2;
+  size = 5;
   pageIndex = 1;
   rangeStart = 0;
   rangeEnd = 0;

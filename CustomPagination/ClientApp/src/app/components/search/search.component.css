@@ -52,7 +52,8 @@ table{
   border-radius: 5px;
   font-weight: bold;
   color: #ffffff;
-  width: 40px;
+  width: 100%;
+  /*width: 40px;*/
   margin-left: 15px;
 }
 
