@@ -52,17 +52,13 @@ export class PaginationControlsDirective {
     this.changeSub.unsubscribe();
   }
 
-  /**
-   * Go to the previous page
-   */
+   // Go to the previous page
   previous() {
     this.checkValidId();
     this.setCurrent(this.getCurrent() - 1);
   }
 
-  /**
-   * Go to the next page
-   */
+   // Go to the next page
   next() {
     this.checkValidId();
     this.setCurrent(this.getCurrent() + 1);
@@ -77,37 +73,27 @@ export class PaginationControlsDirective {
     //this.checkValidId();
     this.setCurrent(1);
   }
-  /**
-   * Returns true if current page is first page
-   */
+   // Returns true if current page is first page
   isFirstPage(): boolean {
     return this.getCurrent() === 1;
   }
 
-  /**
-   * Returns true if current page is last page
-   */
+   // Returns true if current page is last page
   isLastPage(): boolean {
     return this.getLastPage() === this.getCurrent();
   }
 
-  /**
-   * Set the current page number.
-   */
+   // Set the current page number.
   setCurrent(page: number) {
     this.pageChange.emit(page);
   }
 
-  /**
-   * Get the current page number.
-   */
+   // Get the current page number.
   getCurrent(): number {
     return this.service.getCurrentPage(this.id);
   }
 
-  /**
-   * Returns the last page number
-   */
+   // Returns the last page number
   getLastPage(): number {
     let inst = this.service.getInstance(this.id);
     if (inst.totalItems < 1) {
@@ -128,11 +114,9 @@ export class PaginationControlsDirective {
     }
   }
 
-  /**
-   * Updates the page links and checks that the current page is valid. Should run whenever the
-   * PaginationService.change stream emits a value matching the current ID, or when any of the
-   * input values changes.
-   */
+  //  Updates the page links and checks that the current page is valid. Should run whenever the
+  //  PaginationService.change stream emits a value matching the current ID, or when any of the
+  //  input values changes.
   private updatePageLinks() {
     let inst = this.service.getInstance(this.id);
     const correctedCurrentPage = this.outOfBoundCorrection(inst);
@@ -147,10 +131,8 @@ export class PaginationControlsDirective {
     }
   }
 
-  /**
-   * Checks that the instance.currentPage property is within bounds for the current page range.
-   * If not, return a correct value for currentPage, or the current value if OK.
-   */
+  //  Checks that the instance.currentPage property is within bounds for the current page range.
+  //  If not, return a correct value for currentPage, or the current value if OK.
   private outOfBoundCorrection(instance: PaginationControl): number {
     const totalPages = Math.ceil(instance.totalItems / instance.itemsPerPage);
     if (totalPages < instance.currentPage && 0 < totalPages) {
@@ -162,9 +144,7 @@ export class PaginationControlsDirective {
     return instance.currentPage;
   }
 
-  /**
-   * Returns an array of Page objects to use in the pagination controls.
-   */
+   //Returns an array of Page objects to use in the pagination controls.
   private createPageArray(currentPage: number, itemsPerPage: number, totalItems: number, paginationRange: number): Page[] {
     // paginationRange could be a string if passed from attribute, so cast to number.
     paginationRange = +paginationRange;
@@ -198,10 +178,8 @@ export class PaginationControlsDirective {
     return pages;
   }
 
-  /**
-   * Given the position in the sequence of pagination links [i],
-   * figure out what page number corresponds to that position.
-   */
+  //  Given the position in the sequence of pagination links [i],
+  //  figure out what page number corresponds to that position.
   private calculatePageNumber(i: number, currentPage: number, paginationRange: number, totalPages: number) {
     let halfWay = Math.ceil(paginationRange / 2);
     if (i === paginationRange) {

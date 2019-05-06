@@ -13,6 +13,7 @@ export class BasicSearchService {
 
   constructor(private http: HttpClient) { }
 
+  //api call for basic search
   doSearch(searchTerm: string): Observable<Person[]>{
     return this.http.get<Person[]>('api/basicsearch/' + searchTerm).pipe(
       map((response: any) => {

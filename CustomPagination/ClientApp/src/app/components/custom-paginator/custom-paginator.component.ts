@@ -7,8 +7,6 @@ import {
   EventEmitter
 } from '@angular/core';
 
-/*import {DEFAULT_TEMPLATE, DEFAULT_STYLES} from "./template";*/
-
 function coerceToBoolean(input: string | boolean): boolean {
   return !!input && input !== 'false';
 }

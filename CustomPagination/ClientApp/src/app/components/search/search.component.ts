@@ -174,9 +174,11 @@ export class SearchComponent implements OnInit {
   dataSource: any;
   sortedData: any;
 
+  //this link may have an entry in the environments file TODO update link location once i have access
   epic3xLink: string = 'https://epic-uat.apps.eop.gov/employee.aspx?employeeID=';
   //dataSource = new MatTableDataSource<Person>(this.data);
 
+  //define the table and pagination options
   displayedColumns: string[] = ['name', 'personStatus', 'staffType', 'component', 'arrivalDate', 'hrSeparationDate',
     'hrOnDuty', 'hrCategory'];
   size = 5;
@@ -203,7 +205,7 @@ export class SearchComponent implements OnInit {
   //CACI-4533
   paginate(event: any) {
     this.pageIndex = event;
-    //ranges are used for '1-5 of 12' functionality and to track item ranges during sorting
+    //ranges are used for '1-5 of 12' display functionality and to track item ranges during sorting
     this.rangeStart = this.getStartRange(this.pageIndex);
     this.rangeEnd = this.getEndRange(this.pageIndex);
 
@@ -222,7 +224,7 @@ export class SearchComponent implements OnInit {
 
   //CACI-4567
   sortData(sort: Sort){
-    //get copy of data to save original non sort
+    //get copy of data to save original non sort order for when sort is turned off
     const data = this.sortedData;
     if (!sort.active || sort.direction === ''){
       //set data if sort is set to off

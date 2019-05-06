@@ -25,9 +25,9 @@ namespace CustomPagination.Controllers
 
             List<Person> searchResult = new List<Person>();
 
-//            not needed because there is a display name field so search against
-// decided to still search by firstname and lastname instead of the just displayname to catch 
-//searches like 'josh long' will find 'joshua long', it makes the search a little more robust
+            // not needed because there is a display name field so search against
+            // decided to still search by firstname and lastname instead of the just displayname to catch 
+            //searches like 'josh long' will find 'joshua long', it makes the search a little more robust
             string[] searchArray = searchTerm.Trim().Split(' ');
             if (searchArray.Length > 1)
             {
@@ -60,9 +60,9 @@ namespace CustomPagination.Controllers
             return personResults.Distinct().ToList();
         }
 
-//        no longer needed because there is a display name field to search against
-// decided to still search by firstname and lastname instead of the just displayname to catch 
-//searches like 'josh long' will find 'joshua long', it makes the search a little more robust
+        //no longer needed because there is a display name field to search against
+        // decided to still search by firstname and lastname instead of the just displayname to catch 
+        //searches like 'josh long' will find 'joshua long', it makes the search a little more robust
         private async Task<List<Person>> ComplexPersonSearch(string[] searchTerms)
         {
             List<Person> personResults = new List<Person>();

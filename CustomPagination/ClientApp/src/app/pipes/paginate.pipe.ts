@@ -96,12 +96,11 @@ export class PaginatePipe {
     }
   }
 
-  /**
-   * To avoid returning a brand new array each time the pipe is run, we store the state of the sliced
-   * array for a given id. This means that the next time the pipe is run on this collection & id, we just
-   * need to check that the collection, start and end points are all identical, and if so, return the
-   * last sliced array.
-   */
+
+   //To avoid returning a brand new array each time the pipe is run, we store the state of the sliced
+   //array for a given id. This means that the next time the pipe is run on this collection & id, we just
+   //need to check that the collection, start and end points are all identical, and if so, return the
+   //last sliced array.
   private saveState(id: string, collection: any[], slice: any[], start: number, end: number) {
     this.state[id] = {
       collection,
