@@ -29,8 +29,11 @@ namespace CustomPagination.Data
 
         public async Task<List<Person>> PersonSearchInEpic4(string searchTerm)
         {
+            //might pull from tbl_person_directory and not tbl_person (might not be able to person directory
+            //because it might only contain active users
             return await _context4.Persons
-                .Join(_context3x.Persons,
+                    //.Include(p => p.Component)
+                .Join(_context3x.Persons,//.Include(p3 => p3.Component) //load the component info with the person info
                     p4 => p4.EID,
                     p3 => p3.EID,
                     (p4, p3) => new Person()
@@ -51,7 +54,10 @@ namespace CustomPagination.Data
 //                            p.FirstName.Contains(searchTerm) ||
 //                            p.EID.Contains(searchTerm) ||
 //                            p.SSN.Contains(searchTerm)).ToListAsync();
-                .Where(p => p.DisplayName.Contains(searchTerm) ||
+//                .Where(p => p.DisplayName.Contains(searchTerm) ||
+//                            p.EID.Contains(searchTerm) ||
+//                            p.SSN.Contains(searchTerm)).ToListAsync();
+                .Where(p => (p.FirstName + " " + p.LastName).Contains(searchTerm) ||
                             p.EID.Contains(searchTerm) ||
                             p.SSN.Contains(searchTerm)).ToListAsync();
         }
@@ -60,8 +66,11 @@ namespace CustomPagination.Data
         public async Task<List<Person>> PersonSearchInEpic3(string searchTerm)
         {
             return await _context3x.Persons.Where(p =>
-                p.DisplayName.Contains(searchTerm) || p.EID.Contains(searchTerm) ||
+                (p.FirstName + " " + p.LastName).Contains(searchTerm) || p.EID.Contains(searchTerm) ||
                 p.SSN.Contains(searchTerm)).ToListAsync();
+//            return await _context3x.Persons.Where(p =>
+//                p.DisplayName.Contains(searchTerm) || p.EID.Contains(searchTerm) ||
+//                p.SSN.Contains(searchTerm)).ToListAsync();
 //            return await _context3x.Persons.Where(p =>
 //                p.LastName.Contains(searchTerm) || p.FirstName.Contains(searchTerm) || p.EID.Contains(searchTerm) ||
 //                p.SSN.Contains(searchTerm)).ToListAsync();
