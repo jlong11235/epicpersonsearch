@@ -71,7 +71,7 @@
       <div class="page-select-container">
         <span style="vertical-align: -webkit-baseline-middle;">Showing {{rangeStart}}-{{rangeEnd}} of {{data.length}} </span>
         <div class="datatable-paging-control-right">
-          <mat-select [(value)]="size" (valueChange)="paginate(pageIndex)">
+          <mat-select [(value)]="size" (valueChange)="paginate(pageIndex)" name="pageSize">
             <mat-option [value]="5">5</mat-option>
             <mat-option [value]="10">10</mat-option>
             <mat-option [value]="15">15</mat-option>

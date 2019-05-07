@@ -57,6 +57,10 @@ table {
   margin-left: 15px;
 }
 
+.container-fluid{
+  padding-left: 0px;
+  padding-right: 0px;
+}
 .mat-select-value-text {
   color: #ffffff;
 }
@@ -67,7 +71,11 @@ table {
 
 .basicSearchContainer {
   padding-top: 40px;
-  margin-left: -50px;
+  /*margin-left: -50px;*/
+  padding-right: 5%;
+  padding-left: 5%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .basicSearchResult {
@@ -132,79 +140,20 @@ th.mat-header-cell {
   padding-right: 10px;
 }
 
-/* My Tasks Page CACI-4241 Start */
-#myTasksContainer {
-  width: 1356px;
-  height: 524px;
-  position: absolute;
-  left: 10%;
-  box-shadow: 7px 7px 5px 0px rgba(12, 38, 68, .7);
-  display: table;
-  margin-bottom: 75px;
-}
-
-#myTasksTable {
-  width: 1235px;
-  height: 390px;
-  margin: auto;
-  box-shadow: none;
-  margin-bottom: 40px;
-}
-
-#myTasksTable > thead > tr > th {
-  border-bottom: .75px solid #56616D;
-  border-right: 1px solid #56616D;
-  border-top: .75px solid #56616D;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 600;
-  font-size: 21px;
-  color: #0C2644;
-}
-
-#myTasksTable > thead > tr > th:first-child, #myTasksTable > tbody > tr > td:first-child {
-  border-left: 1px solid #56616D;
-}
-
-#myTasksTable > tbody > tr > td {
-  border-bottom: .75px solid #56616D;
-  border-right: 1px solid #56616D;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: #000000;
-}
-
-#myTasksTable > thead > tr.mat-header-row > th.mat-header-cell, #myTasksTable > tbody > tr.mat-row > td.mat-cell {
-  padding-left: 24px !important;
-}
-
-#myTaskLabel {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 600;
-  font-size: 28px;
-  color: #0C2644;
-  border-bottom: 1.5px solid #56616D;
-  padding-left: 59px;
-  padding-bottom: 10px;
-}
-
-#myTasksTable > tbody > tr.mat-header-row > th, #myTasksTable > thead > tr.mat-row > td, #myTasksTable > tbody > tr.mat-row > td, #myTasksTable > thead > tr.mat-header-row > th {
-  width: 25%;
-}
-
-#myTasksTable > thead > .mat-header-row > .mat-header-cell > .mat-sort-header-container > .mat-sort-header-button {
-  width: 100% !important;
-}
-
-#myTasksTable > thead > tr.mat-header-row > th.mat-header-cell {
-  padding-right: 24px !important;
-}
-
-
 .mat-sort-header-indicator {
   opacity: 1;
   color: black;
   font-weight: bold;
+}
+
+.mat-sort-header-container{
+  padding-right: 5px;
+}
+
+.mat-sort-header-button{
+  float: left;
+  margin: 0px auto;
+  margin-left: 0px;
 }
 
 .mat-sort-header-pointer-left, .mat-sort-header-pointer-right, .mat-sort-header-pointer-middle {
@@ -232,6 +181,8 @@ th[class]:not([aria-sort]) .mat-sort-header-arrow:after {
   opacity: 1 !important;
   color: #0C2644 !important;
   display: block !important;
+  float: right;
+  margin: 0px auto;
 }
 
 [aria-sort="ascending"] .mat-sort-header-arrow .mat-sort-header-indicator::before {
@@ -242,6 +193,8 @@ th[class]:not([aria-sort]) .mat-sort-header-arrow:after {
   top: -6px !important;
   color: #0C2644 !important;
   display: block !important;
+  float: right;
+  margin: 0px auto;
 }
 
 [aria-sort="descending"] .mat-sort-header-arrow .mat-sort-header-indicator::before {
@@ -252,4 +205,6 @@ th[class]:not([aria-sort]) .mat-sort-header-arrow:after {
   top: -15px !important;
   color: #0C2644 !important;
   display: block !important;
+  float: right;
+  margin: 0px auto;
 }
