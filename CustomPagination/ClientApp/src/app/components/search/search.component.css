@@ -90,7 +90,7 @@ table {
   font-weight: 600;
   font-size: 22px!important;
   color: #0c2644;
-  border-bottom: 2px solid #333333;
+  border-bottom: 1px solid #56616d;
   /*border-bottom: 1.5px solid #56616d;*/
   padding-left: 20px;
   padding-bottom: 15px;
@@ -102,12 +102,12 @@ table {
   margin-left: 35px;
   margin-top: 20px;
   /*border: 1px solid #56616d;*/
-  border: 2px solid #cdcdcd;
+  border: 1px solid #56616d;
 }
 
 .basicSearchTable th, td {
   /*border: 1px solid #56616d;*/
-  border: 2px solid #cdcdcd;
+  border: 1px solid #56616d;
 }
 
 .basicSearchTable th {
@@ -126,6 +126,7 @@ table {
   font-weight: normal;
   font-size: 13px!important;
   color: #000000;
+  border-bottom: .75px solid #56616d;
 }
 
 .mat-header-row {
