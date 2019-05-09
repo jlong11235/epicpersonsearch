@@ -11,7 +11,7 @@ table {
   padding: 25px;
   padding-bottom: 25px;
   color: #0c2644;
-  font-size: 12px;
+  font-size: 12px!important;
   font-weight: bold;
   display: flex;
   -webkit-box-pack: justify;
@@ -47,7 +47,7 @@ table {
 .mat-select-arrow, .mat-select-underline, .mat-select-trigger {
   background-color: #0c2644;
   padding: 2px 5px 2px 5px;
-  font-size: 12px;
+  font-size: 12px!important;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -88,7 +88,7 @@ table {
 .basicSearchTitle {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 22px!important;
   color: #0c2644;
   border-bottom: 2px solid #333333;
   /*border-bottom: 1.5px solid #56616d;*/
@@ -113,14 +113,18 @@ table {
 .basicSearchTable th {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 17px!important;
   color: #0c2644;
+}
+
+.basicSearchTable tr {
+  height: 65px!important;
 }
 
 .basicSearchTable td {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: normal;
-  font-size: 13px;
+  font-size: 13px!important;
   color: #000000;
 }
 

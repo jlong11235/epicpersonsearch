@@ -1,8 +1,9 @@
 .epic-pagination {
   margin-left: 0;
   color: #0c2644;
-  font-size: 12px;
+  font-size: 12px!important;
   font-weight: bold;
+  font-family: "Source Sans Pro", sans-serif;
   margin-bottom: 1rem; }
 .epic-pagination::before, .epic-pagination::after {
   content: ' ';
@@ -47,7 +48,8 @@
 .epic-pagination .disabled {
   /*padding: 0.1875rem 0.625rem;*/
   margin: 0 4px;
-  color: #cdcdcd;
+  color: gray;
+  opacity: 50%;
   /*border: 1px solid #cacaca;*/
   cursor: default; }
 .epic-pagination .disabled:hover {
@@ -143,7 +145,8 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
   border: 1px solid #cdcdcd;
-  color: #cdcdcd;
+  color: gray;
+  opacity: 50%;
 }
 
 
