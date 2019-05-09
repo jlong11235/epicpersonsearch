@@ -33,18 +33,18 @@ table {
   margin-left: 10%;
 }
 
-.mat-select {
+.page-select-container > .mat-select {
   width: 35px;
   /*margin-left: 15px;*/
   margin-top: 2px;
 }
 
-.mat-select-arrow {
+.page-select-container > .datatable-paging-control-right > .mat-select > .mat-select-trigger > .mat-select-arrow-wrapper > .mat-select-arrow {
   color: #ffffff;
 }
 
-.mat-select:focus:not(.mat-select-disabled).mat-primary
-.mat-select-arrow, .mat-select-underline, .mat-select-trigger {
+.page-select-container > .datatable-paging-control-right > .mat-select:focus:not(.mat-select-disabled).mat-primary
+.mat-select-arrow, .mat-select-underline, .page-select-container > .datatable-paging-control-right > .mat-select > .mat-select-trigger {
   background-color: #0c2644;
   padding: 2px 5px 2px 5px;
   font-size: 12px!important;
@@ -62,7 +62,8 @@ table {
   padding-left: 0px;
   padding-right: 0px;
 }
-.mat-select-value-text {
+
+.page-select-container > .datatable-paging-control-right > .mat-select > .mat-select-trigger > .mat-select-value > .mat-select-value-text {
   color: #ffffff;
 }
 
